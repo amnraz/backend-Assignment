@@ -6,12 +6,12 @@ const { delayMessage } = require('./delay');
 const app = express();
 const PORT = 3000;
 
-// Basic test route
+
 app.get('/test', (req, res) => {
   res.send('Test route is working!');
 });
 
-// Route: /emit?message=Hello
+
 app.get('/emit', (req, res) => {
   const message = req.query.message;
 
@@ -19,7 +19,6 @@ app.get('/emit', (req, res) => {
     return res.status(400).json({ error: 'Missing "message" query parameter' });
   }
 
-  // Trigger the log event
   eventEmitter.emit('log', message);
 
   res.json({
@@ -28,7 +27,6 @@ app.get('/emit', (req, res) => {
   });
 });
 
-// Route: /delay?message=Hello&time=2000
 app.get('/delay', async (req, res) => {
   const message = req.query.message;
   const time = parseInt(req.query.time);
