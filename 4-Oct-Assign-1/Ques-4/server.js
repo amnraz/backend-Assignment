@@ -74,8 +74,9 @@ app.delete("/delete-books/:id", (req, res) => {
             fs.writeFileSync("./db.json", JSON.stringify(data))
             res.json({ msg: "Book Deleted" })
     }
+      
+});
 
-})
 
 
 
